@@ -6,6 +6,16 @@ executors:
       image: ubuntu-1604:202004-01
 
 jobs:
+  lint:
+    steps:
+      - run:
+          name: Lint
+          command: echo "Lint"
+  build:
+    steps:
+      - run:
+          name: Build
+          command: echo "Build"
   horusec:
     executor: horusec-executor
     steps:
@@ -15,7 +25,15 @@ jobs:
           command: |
             curl -fsSL https://horus-assets.s3.amazonaws.com/install.sh | bash -s v1-0-19-alpha-1
             horus start -p ./ -e "true"
+  deploy:
+    steps:
+      - run:
+          name: Deploy
+          command: echo "deploy"
 workflows:
   security-horusec:
     jobs:
+      - lint
+      - build
       - horusec
+      - deploy
