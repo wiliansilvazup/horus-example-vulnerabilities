@@ -34,15 +34,9 @@ jobs:
           name: Deploy
           command: echo "deploy"
 workflows:
-  lint:
-    jobs:
-      - lint
-  build:
-    jobs:
-      - build
   security-horusec:
     jobs:
+      - lint
+      - build
       - horusec
-  deploy:
-    jobs:
       - deploy
