@@ -34,7 +34,7 @@ jobs:
           name: Deploy
           command: echo "deploy"
 workflows:
-  security-horusec:
+  pipeline:
     jobs:
       - lint
       - build
