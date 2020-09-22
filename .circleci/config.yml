@@ -7,11 +7,13 @@ executors:
 
 jobs:
   lint:
+    executor: horusec-executor
     steps:
       - run:
           name: Lint
           command: echo "Lint"
   build:
+    executor: horusec-executor
     steps:
       - run:
           name: Build
@@ -26,16 +28,14 @@ jobs:
             curl -fsSL https://horus-assets.s3.amazonaws.com/install.sh | bash -s v1-0-19-alpha-1
             horus start -p ./ -e "true"
   deploy:
+    executor: horusec-executor
     steps:
       - run:
           name: Deploy
           command: echo "deploy"
 workflows:
-  lint:
-    jobs:
+  lint_build:
       - lint
-  build:
-    jobs:
       - build
   security-horusec:
     jobs:
