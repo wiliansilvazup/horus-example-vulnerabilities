@@ -1,16 +1,21 @@
 version: 2.1
 
 executors:
-  horus-executor:
+  horusec-executor:
     machine:
       image: ubuntu-1604:202004-01
+
 jobs:
-  horus:
-    executor: horus-executor
+  horusec:
+    executor: horusec-executor
     steps:
       - checkout
       - run:
-          name: Running Horus Security
+          name: Horusec Security Test
           command: |
-            curl -fsSL https://horus-assets.s3.amazonaws.com/install.sh | bash
-            horus start -p="./" -e="true"
+            curl -fsSL https://horus-assets.s3.amazonaws.com/install.sh | bash -s v1-0-19-alpha-1
+            horus start -p ./ -e "true"
+workflows:
+  security-horusec:
+    jobs:
+      - horusec
