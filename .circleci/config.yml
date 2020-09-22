@@ -1,0 +1,17 @@
+version: 2.1
+
+executors:
+  horus-security:
+    machine:
+      image: ubuntu-1604:202004-01
+
+jobs:
+  horus:
+    executor: horus-security
+    steps:
+      - checkout
+      - run:
+          name: Running Horus Security
+          command: |
+            curl -fsSL https://horus-assets.s3.amazonaws.com/install.sh | bash
+            horus start -p="./" -e="true"
