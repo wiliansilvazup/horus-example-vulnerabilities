@@ -14,12 +14,16 @@ jobs:
           command: echo "Lint"
   build:
     executor: horusec-executor
+    requires:
+      - lint
     steps:
       - run:
           name: Build
           command: echo "Build"
   horusec:
     executor: horusec-executor
+    requires:
+      - build
     steps:
       - checkout
       - run:
@@ -29,6 +33,8 @@ jobs:
             horus start -p ./ -e "true"
   deploy:
     executor: horusec-executor
+    requires:
+      - horusec
     steps:
       - run:
           name: Deploy
