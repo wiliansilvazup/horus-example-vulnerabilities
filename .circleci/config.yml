@@ -1,13 +1,12 @@
 version: 2.1
 
 executors:
-  horus-security:
+  horus-executor:
     machine:
       image: ubuntu-1604:202004-01
-
 jobs:
   horus:
-    executor: horus-security
+    executor: horus-executor
     steps:
       - checkout
       - run:
