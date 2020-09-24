@@ -1,0 +1,20 @@
+name: deploy-test
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment is: dev, homo, prod'
+        required: true
+        default: 'dev'
+      tags:
+        description: 'Tag to up in environment'
+        required: true
+
+jobs:
+  printInputs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Environment: ${{ github.event.inputs.environment }}"
+          echo "Tags: ${{ github.event.inputs.tags }}"
