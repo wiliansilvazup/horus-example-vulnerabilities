@@ -17,3 +17,4 @@ Please get on the branch of the your language and see vulnerabilities
 | ruby-brakeman                         | [Brakeman](https://github.com/presidentbeef/brakeman)     |
 | gitleaks                              | [GitLeaks](https://github.com/zricethezav/gitleaks)     |
 | kotlin-spotbug                        | [SpotBugs](https://spotbugs.github.io)                    |
+| branch-with-vulnerability             | |
